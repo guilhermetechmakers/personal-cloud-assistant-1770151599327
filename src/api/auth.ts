@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import type { User, Session } from "@supabase/supabase-js";
 
 export interface RequestPasswordResetInput {
   email: string;
@@ -40,4 +41,30 @@ export function hasRecoverySessionInHash(): boolean {
   if (!hash) return false;
   const params = new URLSearchParams(hash.replace("#", ""));
   return params.get("type") === "recovery";
+}
+
+/** Whether the user's email is verified (Supabase: email_confirmed_at set). */
+export function isUserEmailVerified(user: User | null): boolean {
+  return Boolean(user?.email_confirmed_at);
+}
+
+/**
+ * Fetches the current session and user. Use for redirect logic (e.g. unverified → /email-verification).
+ */
+export async function getSession(): Promise<{ session: Session | null; user: User | null }> {
+  const { data: { session } } = await supabase.auth.getSession();
+  return { session, user: session?.user ?? null };
+}
+
+/**
+ * Resends the signup/verification email for the current user.
+ * Requires the user's email (from session). Supabase rate-limits this;
+ * use client-side cooldown (e.g. 60s) to avoid hitting limits.
+ */
+export async function resendVerificationEmail(email: string): Promise<{ error: string | null }> {
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email,
+  });
+  return { error: error?.message ?? null };
 }

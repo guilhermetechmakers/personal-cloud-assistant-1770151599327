@@ -6,10 +6,12 @@ import { Login } from "@/pages/Login";
 import { NotFound } from "@/pages/NotFound";
 import { ServerError } from "@/pages/ServerError";
 import { PasswordReset } from "@/pages/PasswordReset";
+import { EmailVerification } from "@/pages/EmailVerification";
 import { Dashboard } from "@/pages/Dashboard";
 import { Legal } from "@/pages/Legal";
 import { Help } from "@/pages/Help";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { RequireAuth } from "@/components/RequireAuth";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,7 +32,8 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/password-reset" element={<PasswordReset />} />
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="/email-verification" element={<EmailVerification />} />
+          <Route path="/dashboard" element={<RequireAuth><DashboardLayout /></RequireAuth>}>
             <Route index element={<Dashboard />} />
             <Route path="skills" element={<Dashboard />} />
             <Route path="automations" element={<Dashboard />} />
