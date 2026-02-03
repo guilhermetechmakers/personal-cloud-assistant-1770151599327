@@ -5,6 +5,7 @@ import {
   Zap,
   Globe,
   Settings,
+  User,
   ChevronDown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ const navItems = [
   { to: "/dashboard/automations", label: "Automations", icon: Zap },
   { to: "/dashboard/web-agent", label: "Web Agent Runs", icon: Globe },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
+  { to: "/dashboard/profile", label: "Profile", icon: User },
 ];
 
 export function Sidebar() {

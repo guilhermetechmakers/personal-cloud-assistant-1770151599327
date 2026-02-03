@@ -1,0 +1,12 @@
+{
+  "migration_name": "20250203140100_create_user_security",
+  "created_at": "2025-02-03T14:01:00.000Z",
+  "description": "User security (2FA) and sessions tables",
+  "tables_created": ["user_security", "user_sessions"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS public.user_sessions CASCADE; DROP TABLE IF EXISTS public.user_security CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

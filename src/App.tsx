@@ -8,6 +8,7 @@ import { ServerError } from "@/pages/ServerError";
 import { PasswordReset } from "@/pages/PasswordReset";
 import { EmailVerification } from "@/pages/EmailVerification";
 import { Dashboard } from "@/pages/Dashboard";
+import { Profile } from "@/pages/Profile";
 import { Legal } from "@/pages/Legal";
 import { Help } from "@/pages/Help";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="automations" element={<Dashboard />} />
             <Route path="web-agent" element={<Dashboard />} />
             <Route path="settings" element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
           <Route path="/500" element={<ServerError />} />
           <Route path="/404" element={<NotFound />} />

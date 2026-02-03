@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Search, Plus, Bell, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,9 +25,10 @@ export function DashboardNavbar() {
           <Bell className="h-5 w-5" />
           <span className="sr-only">Notifications</span>
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <User className="h-5 w-5" />
-          <span className="sr-only">Profile</span>
+        <Button variant="ghost" size="icon" className="rounded-full" asChild>
+          <Link to="/dashboard/profile" aria-label="Profile">
+            <User className="h-5 w-5" />
+          </Link>
         </Button>
       </div>
     </header>
