@@ -8,6 +8,7 @@ import { ServerError } from "@/pages/ServerError";
 import { PasswordReset } from "@/pages/PasswordReset";
 import { EmailVerification } from "@/pages/EmailVerification";
 import { Dashboard } from "@/pages/Dashboard";
+import { Automations } from "@/pages/Automations";
 import { Profile } from "@/pages/Profile";
 import { Legal } from "@/pages/Legal";
 import { Help } from "@/pages/Help";
@@ -37,7 +38,7 @@ export default function App() {
           <Route path="/dashboard" element={<RequireAuth><DashboardLayout /></RequireAuth>}>
             <Route index element={<Dashboard />} />
             <Route path="skills" element={<Dashboard />} />
-            <Route path="automations" element={<Dashboard />} />
+            <Route path="automations" element={<Automations />} />
             <Route path="web-agent" element={<Dashboard />} />
             <Route path="settings" element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />

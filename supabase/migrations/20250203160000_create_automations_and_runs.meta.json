@@ -1,0 +1,12 @@
+{
+  "migration_name": "20250203160000_create_automations_and_runs",
+  "created_at": "2025-02-03T16:00:00.000Z",
+  "description": "Creates automations and automation_runs tables for scheduler and audit",
+  "tables_created": ["automations", "automation_runs"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS public.automation_runs CASCADE; DROP TABLE IF EXISTS public.automations CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
